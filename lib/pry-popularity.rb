@@ -47,6 +47,8 @@ Found #{lines.size} history lines, scoring (each dot is 100 lines):
         require 'jist'
         res = Jist.gist report, :filename => 'pry-popularity'
         output.puts 'Gisted at ' + res['html_url']
+      else
+        warn '(Note that you can run with -g, A.K.A. --gist)'
       end
       bangs = '!' * rand(4)
       "You're a cool guy"+bangs
