@@ -50,7 +50,7 @@ Found #{lines.size} history lines, scoring (each dot is 100 lines):
       else
         warn '(Note that you can run with -g, A.K.A. --gist)'
       end
-      bangs = '!' * rand(4)
+      bangs = '!' * rand(1..4)
       "You're a cool guy"+bangs
     end
   end
