@@ -10,7 +10,7 @@ class PryPopularity
 
     def process
       # TODO accept arg for other file
-      lines = File.readlines Dir.home + '/.pry_history'
+      lines = File.readlines Pry.config.history.file
       popularity = Hash.new 0
       $stderr.print <<-EOT
 Found #{lines.size} history lines, scoring (each dot is 100 lines):
