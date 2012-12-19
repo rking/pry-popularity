@@ -9,7 +9,6 @@ class PryPopularity
     end
 
     def process
-      # TODO accept arg for other file
       lines = File.readlines Pry.config.history.file
       popularity = Hash.new 0
       $stderr.print <<-EOT
@@ -28,7 +27,7 @@ Found #{lines.size} history lines, scoring (each dot is 100 lines):
             else
               '[ruby code]'
             end
-          end
+        end
         popularity[thing] += 1
         count += 1
         if 0 == count % 100
@@ -47,8 +46,10 @@ Found #{lines.size} history lines, scoring (each dot is 100 lines):
         require 'jist'
         res = Jist.gist report, :filename => 'pry-popularity'
         output.puts <<-EOT
-Gisted at #{res['html_url']}
-Feel free to add to: https://github.com/rking/pry-popularity/wiki/List/_edit
+Gisted at
+  #{res['html_url']}
+Feel free to add to:
+  https://github.com/rking/pry-popularity/wiki/List/_edit
         EOT
       else
         warn '(Note that you can run with -g, A.K.A. --gist)'
