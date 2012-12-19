@@ -37,7 +37,7 @@ Found #{lines.size} history lines, scoring (each dot is 100 lines):
       end
       $stderr.puts
 
-      report = ''
+      report = "pry-popularity results:\n"
       popularity.sort_by{|k,v| v}.each do |thing, score|
         report += "#{score} × #{thing}\n"
       end
@@ -46,11 +46,14 @@ Found #{lines.size} history lines, scoring (each dot is 100 lines):
       if opts.present? :gist
         require 'jist'
         res = Jist.gist report, :filename => 'pry-popularity'
-        output.puts 'Gisted at ' + res['html_url']
+        output.puts <<-EOT
+Gisted at #{res['html_url']}
+Feel free to add to: https://github.com/rking/pry-popularity/wiki/List/_edit
+        EOT
       else
         warn '(Note that you can run with -g, A.K.A. --gist)'
       end
-      bangs = '!' * rand(1..4)
+      bangs = '!' * (1+rand(4))
       "You're a cool guy"+bangs
     end
   end
