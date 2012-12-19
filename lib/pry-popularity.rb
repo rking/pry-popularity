@@ -23,7 +23,7 @@ Found #{lines.size} history lines, scoring (each dot is 100 lines):
         unless thing
           thing = cache[e] =
             if cmd = _pry_.commands.find_command(e)
-              cmd.match
+              cmd.options[:listing]
             else
               '[ruby code]'
             end
